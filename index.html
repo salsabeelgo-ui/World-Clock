@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>World Clock</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #111;
+      color: white;
+    }
+    .clock {
+      font-size: 28px;
+      margin: 20px;
+      padding: 15px;
+      border: 1px solid #444;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+ 
+<h1>🌍 4 Country Live Time</h1>
+ 
+<div class="clock" id="aus"></div>
+<div class="clock" id="usa"></div>
+<div class="clock" id="sl"></div>
+<div class="clock" id="uk"></div>
+ 
+<script>
+function updateClocks() {
+  document.getElementById("aus").innerHTML =
+    "🇦🇺 Australia: " + new Date().toLocaleString("en-US",{timeZone:"Australia/Sydney"});
+ 
+  document.getElementById("usa").innerHTML =
+    "🇺🇸 USA: " + new Date().toLocaleString("en-US",{timeZone:"America/New_York"});
+ 
+  document.getElementById("sl").innerHTML =
+    "🇱🇰 Sri Lanka: " + new Date().toLocaleString("en-US",{timeZone:"Asia/Colombo"});
+ 
+  document.getElementById("uk").innerHTML =
+    "🇬🇧 UK: " + new Date().toLocaleString("en-US",{timeZone:"Europe/London"});
+}
+ 
+setInterval(updateClocks, 1000);
+updateClocks();
+</script>
+ 
+</body>
+</html>
