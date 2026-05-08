@@ -1,159 +1,271 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>InEight Global Time Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #fff;
+<title>inEight Global Support Time Zones</title>
  
-      /* Construction / blueprint style */
-      background:
-        linear-gradient(rgba(20,20,20,0.9), rgba(20,20,20,0.9)),
-        repeating-linear-gradient(
-          0deg,
-          #1c1c1c,
-          #1c1c1c 20px,
-          #222 20px,
-          #222 40px
-        );
-    }
+<style>
  
-    header {
-      text-align: center;
-      padding: 20px;
-      border-bottom: 3px solid #ff9800;
-    }
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0f1115;
+    overflow-x:hidden;
+    color:white;
+}
  
-    .logo {
-      width: 140px;
-      margin-bottom: 10px;
-    }
+/* Animated Background */
  
-    h1 {
-      margin: 5px;
-      font-size: 26px;
-      color: #ff9800;
-      letter-spacing: 1px;
-    }
+body::before{
+    content:'';
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:
+    linear-gradient(
+        45deg,
+        #111 25%,
+        #1a1a1a 25%,
+        #1a1a1a 50%,
+        #111 50%,
+        #111 75%,
+        #1a1a1a 75%
+    );
+    background-size:80px 80px;
+    animation:bgmove 10s linear infinite;
+    z-index:-1;
+    opacity:0.3;
+}
  
-    .subtitle {
-      font-size: 12px;
-      color: #aaa;
-    }
+@keyframes bgmove{
+    0%{transform:translate(0,0);}
+    100%{transform:translate(-80px,-80px);}
+}
  
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+/* Header */
  
-    .card {
-      background: rgba(30, 30, 30, 0.95);
-      border-left: 5px solid #ff9800;
-      padding: 20px;
-      border-radius: 6px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: 0.3s;
-    }
+header{
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:3px solid #ff9800;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(5px);
+}
  
-    .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(255,152,0,0.4);
-    }
+.logo{
+    width:180px;
+    margin-bottom:10px;
+    animation:float 3s ease-in-out infinite;
+}
  
-    .title {
-      font-size: 16px;
-      font-weight: bold;
-      color: #ffcc80;
-    }
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-8px);}
+    100%{transform:translateY(0px);}
+}
  
-    .time {
-      font-size: 22px;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #ffffff;
-    }
+h1{
+    color:#ff9800;
+    font-size:34px;
+    margin:10px 0;
+    letter-spacing:1px;
+}
  
-    .tag {
-      font-size: 11px;
-      color: #999;
-      margin-top: 5px;
-    }
-  </style>
+.subtitle{
+    color:#ccc;
+    font-size:14px;
+}
+ 
+/* Grid */
+ 
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+    padding:30px;
+    max-width:1400px;
+    margin:auto;
+}
+ 
+/* Cards */
+ 
+.card{
+    background:rgba(25,25,25,0.9);
+    border:1px solid #333;
+    border-left:6px solid #ff9800;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+ 
+.card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.1),
+        transparent
+    );
+    transition:0.6s;
+}
+ 
+.card:hover::before{
+    left:100%;
+}
+ 
+.card:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 0 25px rgba(255,152,0,0.4);
+}
+ 
+.title{
+    color:#ffcc80;
+    font-size:18px;
+    font-weight:bold;
+}
+ 
+.time{
+    font-size:26px;
+    margin-top:15px;
+    font-weight:bold;
+    color:white;
+}
+ 
+.tag{
+    margin-top:10px;
+    color:#999;
+    font-size:12px;
+}
+ 
+/* Footer */
+ 
+footer{
+    text-align:center;
+    padding:20px;
+    color:#666;
+    font-size:12px;
+}
+ 
+</style>
 </head>
  
 <body>
  
 <header>
-  <!-- Replace with real InEight logo -->
-  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Logo_placeholder.png">
  
-  <h1>🏗 InEight Global Time Control</h1>
-  <div class="subtitle">Construction Project Coordination Dashboard</div>
+<img src="ineight-logo.png" class="logo">
+ 
+<h1>🏗 inEight Global Support Time Zones</h1>
+ 
+<div class="subtitle">
+Real-Time Global Operations Dashboard
+</div>
+ 
 </header>
  
 <div class="container">
  
-  <div class="card">
-    <div class="title">Australia – Sydney</div>
-    <div class="time" id="aus"></div>
-    <div class="tag">Project Region A</div>
-  </div>
+<div class="card">
+<div class="title">🇦🇺 Australia - Sydney</div>
+<div class="time" id="sydney"></div>
+<div class="tag">AEST Operations</div>
+</div>
  
-  <div class="card">
-    <div class="title">USA – New York</div>
-    <div class="time" id="usa"></div>
-    <div class="tag">HQ Operations</div>
-  </div>
+<div class="card">
+<div class="title">🇦🇺 Australia - Perth</div>
+<div class="time" id="perth"></div>
+<div class="tag">AWST Operations</div>
+</div>
  
-  <div class="card">
-    <div class="title">Sri Lanka – Colombo</div>
-    <div class="time" id="sl"></div>
-    <div class="tag">Support Center</div>
-  </div>
+<div class="card">
+<div class="title">🇦🇺 Australia - Adelaide</div>
+<div class="time" id="adelaide"></div>
+<div class="tag">ACST Operations</div>
+</div>
  
-  <div class="card">
-    <div class="title">UK – London</div>
-    <div class="time" id="uk"></div>
-    <div class="tag">EU Projects</div>
-  </div>
+<div class="card">
+<div class="title">🇦🇺 Australia - Brisbane</div>
+<div class="time" id="brisbane"></div>
+<div class="tag">Queensland Operations</div>
+</div>
  
-  <div class="card">
-    <div class="title">Canada – Toronto</div>
-    <div class="time" id="ca"></div>
-    <div class="tag">North Region Ops</div>
-  </div>
+<div class="card">
+<div class="title">🇺🇸 USA - Scottsdale</div>
+<div class="time" id="usa"></div>
+<div class="tag">HQ Operations</div>
+</div>
+ 
+<div class="card">
+<div class="title">🇱🇰 Sri Lanka - Colombo</div>
+<div class="time" id="sl"></div>
+<div class="tag">Support Center</div>
+</div>
+ 
+<div class="card">
+<div class="title">🇬🇧 UK - London</div>
+<div class="time" id="uk"></div>
+<div class="tag">EMEA Operations</div>
+</div>
+ 
+<div class="card">
+<div class="title">🇨🇦 Canada - Toronto</div>
+<div class="time" id="ca"></div>
+<div class="tag">North America Ops</div>
+</div>
  
 </div>
  
+<footer>
+inEight Global Operations Dashboard
+</footer>
+ 
 <script>
-function updateTime() {
-  document.getElementById("aus").innerHTML =
-    new Date().toLocaleString("en-US",{timeZone:"Australia/Sydney", hour: '2-digit', minute:'2-digit', second:'2-digit'});
  
-  document.getElementById("usa").innerHTML =
-    new Date().toLocaleString("en-US",{timeZone:"America/New_York", hour: '2-digit', minute:'2-digit', second:'2-digit'});
+function updateTime(){
  
-  document.getElementById("sl").innerHTML =
-    new Date().toLocaleString("en-US",{timeZone:"Asia/Colombo", hour: '2-digit', minute:'2-digit', second:'2-digit'});
- 
-  document.getElementById("uk").innerHTML =
-    new Date().toLocaleString("en-US",{timeZone:"Europe/London", hour: '2-digit', minute:'2-digit', second:'2-digit'});
- 
-  document.getElementById("ca").innerHTML =
-    new Date().toLocaleString("en-US",{timeZone:"America/Toronto", hour: '2-digit', minute:'2-digit', second:'2-digit'});
+function setTime(id, zone){
+document.getElementById(id).innerHTML =
+new Date().toLocaleTimeString(
+'en-US',
+{
+timeZone:zone,
+hour:'2-digit',
+minute:'2-digit',
+second:'2-digit'
+}
+);
 }
  
-setInterval(updateTime, 1000);
+setTime("sydney","Australia/Sydney");
+setTime("perth","Australia/Perth");
+setTime("adelaide","Australia/Adelaide");
+setTime("brisbane","Australia/Brisbane");
+ 
+setTime("usa","America/Phoenix");
+ 
+setTime("sl","Asia/Colombo");
+ 
+setTime("uk","Europe/London");
+ 
+setTime("ca","America/Toronto");
+ 
+}
+ 
+setInterval(updateTime,1000);
+ 
 updateTime();
+ 
 </script>
  
 </body>
 </html>
- 
